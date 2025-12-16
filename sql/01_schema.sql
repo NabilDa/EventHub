@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS EVENEMENT
     id_evenement INT AUTO_INCREMENT,
     id_salle INT NOT NULL,
     titre VARCHAR(150) NOT NULL,
+    lieu VARCHAR(50) NOT NULL,
     description TEXT,
     categorie VARCHAR(50) NOT NULL, -- Ex: 'Concert', 'Théâtre'
     date_heure DATETIME NOT NULL,
@@ -43,7 +44,7 @@ CREATE TABLE IF NOT EXISTS PLACE (
 
     CONSTRAINT pk_place PRIMARY KEY (id_place),
     CONSTRAINT fk_place_salle FOREIGN KEY (id_salle) REFERENCES SALLE(id_salle) ON DELETE CASCADE,
-    
+
     -- Empêcher les doublons physiques : 
     -- On ne peut pas avoir deux fois le siège A-12 dans la même salle
     CONSTRAINT uq_position_place UNIQUE (id_salle, rangee, numero_siege)
