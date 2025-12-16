@@ -1,0 +1,13 @@
+services:
+  db:
+    image: mariadb:11.1.2
+    container_name: eventhub
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: eventhub
+      MARIADB_USER: eventhub_user
+      MARIADB_PASSWORD: userpassword
+    ports:
+      - "3309:3309"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
